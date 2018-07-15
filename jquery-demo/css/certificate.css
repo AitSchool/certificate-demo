@@ -1,0 +1,805 @@
+@charset "utf-8";
+* {
+  font-family: Verdana, "Lantinghei SC", "Hiragino Sans GB", "Microsoft Yahei", Helvetica, arial, "\5b8b\4f53", sans-serif;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+select,
+textarea {
+  font-size: 100%;
+  font-weight: 400;
+}
+ol,
+ul {
+  list-style: none;
+}
+.caMsgBox {
+  position: absolute;
+  padding: 15px 20px ;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  min-width: 100px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 2px;
+  z-index: 999;
+  animation: msgbox .3s;
+  -moz-animation: msgbox .3s;
+  -webkit-animation: msgbox .3s;
+  -o-animation: msgbox .3s;
+}
+@keyframes msgbox {
+  from {
+    -moz-transform: scale(0.3, 0.3);
+    -webkit-transform: scale(0.3, 0.3);
+    -o-transform: scale(0.3, 0.3);
+    background: rgba(0, 0, 0, 0.1);
+  }
+  to {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+  }
+}
+@-moz-keyframes msgbox {
+  from {
+    -moz-transform: scale(0.3, 0.3);
+    -webkit-transform: scale(0.3, 0.3);
+    -o-transform: scale(0.3, 0.3);
+    background: rgba(0, 0, 0, 0.1);
+  }
+  to {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+  }
+}
+@-webkit-keyframes msgbox {
+  from {
+    -moz-transform: scale(0.3, 0.3);
+    -webkit-transform: scale(0.3, 0.3);
+    -o-transform: scale(0.3, 0.3);
+    background: rgba(0, 0, 0, 0.1);
+  }
+  to {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+  }
+}
+@-o-keyframes msgbox {
+  from {
+    -moz-transform: scale(0.3, 0.3);
+    -webkit-transform: scale(0.3, 0.3);
+    -o-transform: scale(0.3, 0.3);
+    background: rgba(0, 0, 0, 0.1);
+  }
+  to {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+  }
+}
+.caMask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+.caPopup {
+  width: 680px;
+  padding: 40px;
+  padding-top: 25px;
+  padding-bottom: 50px;
+  display: block;
+  z-index: 901;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-left: -340px;
+  background: #fff;
+  border-radius: 4px;
+  transform: translateY(-50%);
+}
+.caPopup .caClose {
+  top: 12px;
+  right: 12px;
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  overflow: hidden;
+  position: absolute;
+  cursor: pointer;
+}
+.caPopup .caClose:hover:before,
+.caPopup .caClose:hover:after {
+  background: #666;
+}
+.caPopup .caClose:before,
+.caPopup .caClose:after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+  background: #999;
+}
+.caPopup .caClose:after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.caPopup .caClose:before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.caPopup .caStep {
+  display: inline-block;
+  width: 110px;
+  height: 20px;
+  background: #eceff3;
+  border-radius: 10px;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  color: #333;
+}
+.caPopup .caStep:after {
+  content: '/ 共 3 步';
+  color: #999;
+}
+.caPopup h2 {
+  font-size: 18px;
+  color: #333;
+  height: 35px;
+  vertical-align: middle;
+}
+.caPopup h2 span {
+  display: inline-block;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  background: #ff9d58;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.caPopup h2 img {
+  width: 42px;
+  height: 35px;
+  vertical-align: middle;
+  margin-left: 5px;
+  position: relative;
+  top: -3px;
+}
+.caPopup .caInfo {
+  font-size: 12px;
+  color: #666;
+  height: 30px;
+  margin-top: 10px;
+  border-bottom: 1px solid #e4e4e4;
+}
+.caPopup .caInfo .color333 {
+  color: #333;
+}
+.caPopup .caPopup-container {
+  width: 100%;
+}
+.caPopup .caSelect {
+  float: left;
+  width: 70px;
+  height: 30px;
+  border-radius: 2px;
+}
+.caPopup .caSelect button {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  line-height: 28px;
+  font-size: 12px;
+  color: #999;
+  text-align: left;
+  text-indent: 10px;
+  border: 1px solid #e4e4e4;
+  position: relative;
+  overflow: hidden;
+}
+.caPopup .caSelect button:before {
+  content: ' ';
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  background: #e4e4e4;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+.caPopup .caSelect button:after {
+  content: ' ';
+  width: 0;
+  height: 0;
+  border-top: 6px solid #333;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 0;
+  border-radius: 2px;
+  position: absolute;
+  top: 12px;
+  right: 10px;
+}
+.caPopup .caSelect .color333 {
+  color: #333;
+}
+.caPopup .caSelect ul {
+  position: relative;
+  width: 100%;
+  float: left;
+  border: 1px solid #e4e4e4;
+  border-top: 0;
+  max-height: 220px;
+  overflow: auto;
+  display: none;
+}
+.caPopup .caSelect ul li {
+  height: 24px;
+  line-height: 24px;
+  color: #666;
+  box-sizing: border-box;
+  list-style: none;
+  font-size: 12px;
+  float: left;
+  width: 100%;
+  cursor: pointer;
+  background: #fff;
+  text-indent: 10px;
+}
+.caPopup .caSelect ul li:hover {
+  background: #f0f0f0;
+}
+.caPopup .caBtnCon {
+  clear: both;
+  width: 100%;
+  text-align: center;
+}
+.caPopup .caBtnCon .caSubBtn {
+  width: 160px;
+  height: 40px;
+  background: #bbb;
+  color: #fff;
+  font-size: 15px;
+  line-height: 40px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+}
+.caPopup .caBtnCon .caSubOne {
+  margin-top: 40px;
+}
+.caPopup .caBtnCon .activeOne,
+.caPopup .caBtnCon .activeThree,
+.caPopup .caBtnCon .activeFive,
+.caPopup .caBtnCon .activeSix {
+  background: #35b558;
+  border: none;
+}
+.caPopup .caBtnCon .activeOne:hover,
+.caPopup .caBtnCon .activeThree:hover,
+.caPopup .caBtnCon .activeFive:hover,
+.caPopup .caBtnCon .activeSix:hover {
+  background: #66d178;
+}
+/*第一张表*/
+.caStepOne {
+  padding-top: 40px;
+  padding-left: 30px;
+}
+.caStepOne .caUser {
+  float: left;
+  width: 80px;
+  margin-right: 60px;
+}
+.caStepOne .caUser img {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #e4e4e4;
+  border-radius: 50%;
+}
+.caStepOne .caUser span {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  margin-top: 14px;
+}
+.caStepOne .caUserFromOne {
+  float: left;
+  width: 428px;
+}
+.caStepOne .caUserFromOne .fromConOne {
+  height: 30px;
+}
+.caStepOne .caUserFromOne .fromConOne span {
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  color: #333;
+  margin-right: 4px;
+}
+.caStepOne .caUserFromOne .fromConOne .caSexSelect {
+  margin-right: 46px;
+}
+.caStepOne .caUserFromOne .fromConOne .caProSelect {
+  margin-right: 10px;
+  width: 90px;
+}
+.caStepOne .caUserFromOne .fromConOne .caProSelect ul {
+  z-index: 2;
+}
+.caStepOne .caUserFromOne .fromConOne .caCitySelect {
+  width: 90px;
+}
+.caStepOne .caUserFromOne .fromConTwo {
+  float: left;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.caStepOne .caUserFromOne .fromConTwo p {
+  font-size: 12px;
+  color: #333;
+  margin-top: 30px;
+  margin-bottom: 14px;
+}
+.caStepOne .caUserFromOne .fromConTwo ul li {
+  float: left;
+  width: 110px;
+  height: 40px;
+  border: 1px solid #e4e4e4;
+  border-radius: 2px;
+  line-height: 38px;
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  margin-right: 40px;
+  cursor: pointer;
+}
+.caStepOne .caUserFromOne .fromConTwo ul li:last-child {
+  margin-right: 0;
+}
+.caStepOne .caUserFromOne .fromConTwo ul li:hover {
+  border-color: #bbb;
+}
+.caStepOne .caUserFromOne .fromConTwo ul .active {
+  border-color: #35b558;
+}
+.caStepOne .caUserFromOne .fromConTwo ul .active:hover {
+  border-color: #35b558;
+}
+.caStepOne .caUserFromOne .fromConThree {
+  float: left;
+}
+.caStepOne .caUserFromOne .fromConThree .caJobSelect,
+.caStepOne .caUserFromOne .fromConThree .caGradeSelect {
+  width: 130px;
+  margin-right: 40px;
+  display: none;
+}
+.caStepOne .caUserFromOne .fromConThree .caJobSelect ul,
+.caStepOne .caUserFromOne .fromConThree .caGradeSelect ul {
+  max-height: 140px;
+}
+.caStepOne .caUserFromOne .fromConThree .caJobYearSelect,
+.caStepOne .caUserFromOne .fromConThree .caSGYearSelect {
+  width: 130px;
+  display: none;
+}
+.caStepOne .caUserFromOne .fromConThree .caJobYearSelect ul,
+.caStepOne .caUserFromOne .fromConThree .caSGYearSelect ul {
+  max-height: 140px;
+}
+.caStepTwo {
+  padding-top: 24px;
+}
+.caStepTwo .caStepTwoTitle {
+  height: 16px;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 10px;
+}
+.caStepTwo .caStepTwoTitle span {
+  color: #999;
+}
+.caStepTwo .caInterestSelect li {
+  float: left;
+  width: 130px;
+  height: 40px;
+  border: 1px solid #e4e4e4;
+  border-radius: 2px;
+  margin-right: 25px;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #666;
+  line-height: 38px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+.caStepTwo .caInterestSelect li:nth-child(4n) {
+  margin-right: 0;
+}
+.caStepTwo .caInterestSelect li:hover {
+  border-color: #bbb;
+}
+.caStepTwo .caInterestSelect .active {
+  border-color: #35b558;
+}
+.caStepTwo .caInterestSelect .active:before {
+  content: ' ';
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #35b558;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+.caStepTwo .caInterestSelect .active:after {
+  content: ' ';
+  width: 4px;
+  height: 9px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  background: #35b558;
+  position: absolute;
+  top: -6px;
+  right: -3px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.caStepTwo .caInterestSelect .active:hover {
+  border-color: #35b558;
+}
+.caStepTwo .caBtnCon .caSubTwo {
+  margin-top: 40px;
+  background: #fff;
+  border: 1px solid #35b558;
+  color: #35b558;
+}
+.caStepTwo .caBtnCon .caSubThree {
+  margin-top: 40px;
+  margin-left: 25px;
+}
+.caStepThree {
+  padding-top: 24px;
+}
+.caStepThree .caStepThreeTitle {
+  height: 16px;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 20px;
+}
+.caStepThree .caStepThreeTitle span {
+  color: #999;
+}
+.caStepThree .caLevelContainer > li {
+  margin-top: 10px;
+  height: 80px;
+  border: 1px solid #e4e4e4;
+  padding: 19px 19px 18px 20px;
+}
+.caStepThree .caLevelContainer > li .levelText {
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  width: 194px;
+  font-size: 12px;
+  color: #666;
+}
+.caStepThree .caLevelContainer > li .caLevelSelect li {
+  float: left;
+  width: 80px;
+  height: 30px;
+  border: 1px solid #e4e4e4;
+  border-radius: 2px;
+  margin-right: 15px;
+  color: #333;
+  font-size: 12px;
+  line-height: 28px;
+  text-align: center;
+  cursor: pointer;
+}
+.caStepThree .caLevelContainer > li .caLevelSelect li:last-child {
+  margin-right: 0;
+}
+.caStepThree .caLevelContainer > li .caLevelSelect li:hover {
+  border-color: #bbb;
+}
+.caStepThree .caLevelContainer > li .caLevelSelect .active {
+  border-color: #35b558;
+}
+.caStepThree .caLevelContainer > li .caLevelSelect .active:hover {
+  border-color: #35b558;
+}
+.caStepThree .caLevelContainer > li .caLevelLine li {
+  float: left;
+  width: 87px;
+  height: 3px;
+  background: #e4e4e4;
+  margin-right: 1px;
+  margin-top: 8px;
+}
+.caStepThree .caLevelContainer > li .caLevelLine li:nth-child(2),
+.caStepThree .caLevelContainer > li .caLevelLine li:nth-child(3) {
+  width: 94px;
+}
+.caStepThree .caLevelContainer > li .caLevelLine li:last-child {
+  margin-right: 0;
+}
+.caStepThree .caLevelContainer > li .caLevelLine .active:nth-child(1) {
+  background: #bae7c6;
+}
+.caStepThree .caLevelContainer > li .caLevelLine .active:nth-child(2) {
+  background: #9adcac;
+}
+.caStepThree .caLevelContainer > li .caLevelLine .active:nth-child(3) {
+  background: #6ecf89;
+}
+.caStepThree .caLevelContainer > li .caLevelLine .active:nth-child(4) {
+  background: #35b558;
+}
+.caStepThree .caBtnCon .caSubFour {
+  margin-top: 40px;
+  background: #fff;
+  border: 1px solid #35b558;
+  color: #35b558;
+}
+.caStepThree .caBtnCon .caSubFive {
+  margin-top: 40px;
+  margin-left: 25px;
+}
+.caStepFour {
+  padding-top: 49px;
+  text-align: center;
+}
+.caStepFour .caform {
+  margin-bottom: 10px;
+  display: inline-block;
+  width: 340px;
+  position: relative;
+}
+.caStepFour .caform input {
+  height: 40px;
+  border: 1px solid #e4e4e4;
+  font-size: 12px;
+  color: #333;
+  padding-left: 10px;
+  outline: none;
+}
+.caStepFour .caform .caformPhone {
+  width: 340px;
+}
+.caStepFour .caform .caformImgCode {
+  width: 220px;
+  float: left;
+}
+.caStepFour .caform .caformImg {
+  float: right;
+  height: 40px;
+  width: 100px;
+  cursor: pointer;
+}
+.caStepFour .caform .caformVerifyCode {
+  width: 340px;
+}
+.caStepFour .caform .getVerifyCode {
+  display: inline-block;
+  width: 115px;
+  height: 30px;
+  background: #eaeaea;
+  color: #666;
+  outline: none;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 12px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  cursor: pointer;
+  border: none;
+}
+.caStepFour .caform .getVerifyCode:hover {
+  background: #eee;
+  color: #999;
+}
+.caStepFour .caform span {
+  display: inline-block;
+  position: absolute;
+  top: 11px;
+  right: 10px;
+  color: #ff5c00;
+  font-size: 12px;
+}
+.caStepFour .caform .imgError {
+  right: 130px;
+}
+.caStepFour .caform .verError {
+  right: 130px;
+}
+.caStepFour .caSubSix {
+  margin-top: 20px;
+}
+.caStepFive {
+  padding-top: 15px;
+}
+.caStepFive .caSuccessContainer {
+  text-align: center;
+  height: 230px;
+}
+.caStepFive .caSuccessContainer .userPic {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  position: relative;
+}
+.caStepFive .caSuccessContainer .userPic .userPhoto {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e4e4e4;
+  border-radius: 50%;
+}
+.caStepFive .caSuccessContainer .userPic .userPhotoIcon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+.caStepFive .caSuccessContainer .caScName {
+  font-size: 12px;
+  color: #666;
+  height: 16px;
+  line-height: 16px;
+  margin-top: 8px;
+}
+.caStepFive .caSuccessContainer h4 {
+  font-size: 20px;
+  color: #333333;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 10px;
+}
+.caStepFive .caSuccessContainer .caCanSeetext {
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px;
+}
+.caStepFive .caSuccessContainer .caStudyNow {
+  margin-top: 15px;
+}
+.caStepFive .caSuccessContainer .caStudyNow a {
+  font-size: 14px;
+  color: #35b558;
+}
+.caStepFive .caSuccessContainer .caStudyNow a:hover {
+  text-decoration: underline;
+}
+.caStepFive .recommendtitle {
+  text-align: left;
+  font-size: 12px;
+  color: #999;
+  border-top: 1px solid #e4e4e4;
+  height: 40px;
+  padding-top: 10px;
+}
+.caStepFive .zhiyelesson {
+  height: 90px;
+  margin-bottom: 20px;
+}
+.caStepFive .zhiyelesson dt {
+  height: 20px;
+  font-size: 13px;
+  color: #333;
+}
+.caStepFive .zhiyelesson dd {
+  float: left;
+  height: 70px;
+  width: 50%;
+  position: relative;
+  padding-left: 115px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.caStepFive .zhiyelesson dd img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 105px;
+}
+.caStepFive .zhiyelesson dd p {
+  font-size: 12px;
+  color: #333;
+  height: 30px;
+  line-height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.caStepFive .zhiyelesson dd span {
+  font-size: 12px;
+  color: #999;
+  height: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.caStepFive .viplesson {
+  height: 60px;
+}
+.caStepFive .viplesson dt {
+  height: 20px;
+  font-size: 12px;
+  color: #666;
+}
+.caStepFive .viplesson dl {
+  float: left;
+  width: 33.33%;
+  height: 20px;
+  line-height: 20px;
+  color: #333;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 3px;
+}
+.caStepFive .viplesson dl a {
+  color: #333;
+  text-decoration: none;
+}
+.caStepFive .viplesson dl a:hover {
+  color: #35b558;
+}
+.caStepFive .viplesson dl:before {
+  content: '•';
+  font-size: 12px;
+  margin-right: 4px;
+}
