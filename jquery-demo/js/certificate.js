@@ -698,13 +698,13 @@ $(function(){
             if(val == '3'){
                 $('.caSubOne').addClass('activeOne')
             }else if(val == '2'){
-                if(certificate.data.career_type!==""&certificate.data.work_experience!==""&certificate.data.career_type!=0&certificate.data.work_experience!=0){
+                if(certificate.data.career_type && certificate.data.work_experience){
                     $('.caSubOne').addClass('activeOne')
                 }else{
                     $('.caSubOne').removeClass('activeOne')
                 }
             }else if(val == '1'){
-                if(certificate.data.career_type!==""&certificate.data.school_year_enter!==""&certificate.data.career_type!=0&certificate.data.school_year_enter!=0){
+                if(certificate.data.career_type && certificate.data.school_year_enter){
                     $('.caSubOne').addClass('activeOne')
                 }else{
                     $('.caSubOne').removeClass('activeOne')
