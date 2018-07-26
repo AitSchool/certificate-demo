@@ -11,7 +11,7 @@ $(function(){
             career_type:"",      //职业类型,学生:初中、高中、大学;在职:产品、前端、后端;
             work_experience:0,  //工作年限
             school_year_enter:0,//入学年份
-            career_interest:"",  //职业方向＋水平 eg:114-121|115-125
+            career_interest:"114-121|115-124",  //职业方向＋水平 eg:114-121|115-125
             ca_status:0,         //是否认证
         },
         interestArr:[],          //临时存放用户选择职业方向数据
@@ -277,19 +277,19 @@ $(function(){
         templeteThreeHtml:function(){
             var interestLevelHtml = '';
             certificate.interestArr.forEach(function(data,index){
-                var id = data.split("-")[0]
-
+                let id = data.split("-")[0]
+                let select_id = data.split("-")[1];
                 certificate.InterestData.forEach(function(data,index){
                     if(id == data.item_id){
-                        var text = data.name
-                        var html = `
+                        let text = data.name
+                        let html = `
                             <li>
                                 <span class="levelText">${text}</span>
                                 <ul class="caLevelSelect">
-                                    <li vkey="${id}" value="121">完全不了解</li>
-                                    <li vkey="${id}" value="122">有点了解</li>
-                                    <li vkey="${id}" value="123">熟悉</li>
-                                    <li vkey="${id}" value="124">精通</li>
+                                    <li vkey="${id}" class="${select_id == 121 ? 'active' : ''}" value="121">完全不了解</li>
+                                    <li vkey="${id}" class="${select_id == 122 ? 'active' : ''}" value="122">有点了解</li>
+                                    <li vkey="${id}" class="${select_id == 123 ? 'active' : ''}" value="123">熟悉</li>
+                                    <li vkey="${id}" class="${select_id == 124 ? 'active' : ''}" value="124">精通</li>
                                 </ul>
                                 <ul class="caLevelLine">
                                     <li></li>
